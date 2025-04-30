@@ -95,8 +95,8 @@
 			animation-duration: 1s;
 		}
 		@keyframes aparece_contenedor_general {
-			0% { opacity: 0; }
-			100% { opacity: 1; }
+			0% {opacity: 0;}
+			100% {opacity: 1;}
 		}
 		#contenedor_introducir_codigo {
 			position: absolute;
@@ -244,15 +244,22 @@
 			border-radius: 30px;
 			transform: translate(-50%, 0%);
 			cursor: pointer;
-			transition: .25s;
-			box-shadow: 0px 0px 10px #666666;
+			transition: .3s;
 			background-image: url("./img/icono_nueva_carta.png");
 			background-repeat: no-repeat;
 			background-position: center;
 			background-size: contain;
+			background-color: rgb(197,196,145,.5);
 		}
 		#boton_nueva_carta:hover {
-			box-shadow: 0px 0px 10px black;
+			background-color: rgb(197,196,145,.7);
+		}
+		.clase_para_rotar {
+			animation: rotar_boton_nueva_carta .5s;
+		}
+		@keyframes rotar_boton_nueva_carta {
+			0% {transform: translate(-50%, 0%) rotate(0deg);}
+			100% {transform: translate(-50%, 0%) rotate(180deg);}
 		}
 		#interior_carta_para_hacerlo_desaparecer {transition: .4s;}
 		#codigo {
@@ -265,17 +272,19 @@
 			animation: shake 0.3s;
 		}
 		@keyframes shake {
-			0% { transform: translateX(0); }
-			25% { transform: translateX(-5px); }
-			50% { transform: translateX(5px); }
-			75% { transform: translateX(-5px); }
-			100% { transform: translateX(0); }
+			0% {transform: translateX(0);}
+			25% {transform: translateX(-5px);}
+			50% {transform: translateX(5px);}
+			75% {transform: translateX(-5px);}
+			100% {transform: translateX(0);}
 		}
 		
 		@media (max-height: 660px) {
 			#contenedor_general {top: 0%; transform: translate(-50%, 0%);}
-			#boton_nueva_carta:hover {box-shadow: 0px 0px 10px #666666;}
+		}
+		@media (max-width: 500px) {
 			#acceder:hover {box-shadow: 0px 0px 0px #999999;}	
+			#boton_nueva_carta:hover {background-color: rgb(197,196,145,.5);}
 		}
 		
 		#contenedor_simbolo_1 {background-image: linear-gradient(to bottom, #c5c491, #9ebc99);}
@@ -622,4 +631,9 @@
 				}, 300);
 			}
 		}
+		boton_nueva_carta.addEventListener("click", () => {
+			boton_nueva_carta.classList.remove("clase_para_rotar"); // quitar por si aún la tiene
+			void boton_nueva_carta.offsetWidth; // forzar reflow para reiniciar animación
+			boton_nueva_carta.classList.add("clase_para_rotar");
+		});
 	</script>
