@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Kii</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Saira+Semi+Condensed:wght@100;200;300;400;500;600;700;800;900&family=Saira:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+	</head>
+	<body onload="cargar_primera_carta()">
+		<div id="contenedor_general">
+			<div class="separador"></div>
+			<div id="carta">
+				<div id="interior_carta_para_hacerlo_desaparecer">
+					<div class="separador"></div>
+					<div id="contenedor_pregunta_1" class="contenedor_pregunta">
+						<div id="contenedor_simbolo_1" class="contenedor_simbolo">
+							<div id="simbolo_categoria_1" class="simbolo"></div>
+						</div>
+						<div class="contenedor_texto">
+							<div id="titulo_categoria_1" class="titulo_categoria">Kii</div>
+							<div id="pregunta_1" class="pregunta"></div>
+						</div>
+					</div>
+					<div id="contenedor_pregunta_2" class="contenedor_pregunta">
+						<div id="contenedor_simbolo_2" class="contenedor_simbolo">
+							<div id="simbolo_categoria_2" class="simbolo"></div>
+						</div>
+						<div class="contenedor_texto">
+							<div id="titulo_categoria_2" class="titulo_categoria">FANTASÍA</div>
+							<div id="pregunta_2" class="pregunta"></div>
+						</div>
+						<div class="separador_gris"></div>
+					</div>
+					<div id="contenedor_pregunta_3" class="contenedor_pregunta">
+						<div id="contenedor_simbolo_3" class="contenedor_simbolo">
+							<div id="simbolo_categoria_3" class="simbolo"></div>
+						</div>
+						<div class="contenedor_texto">
+							<div id="titulo_categoria_3" class="titulo_categoria">INGENIO</div>
+							<div id="pregunta_3" class="pregunta"></div>
+						</div>
+						<div class="separador_gris"></div>
+					</div>
+					<div id="contenedor_pregunta_4" class="contenedor_pregunta">
+						<div id="contenedor_simbolo_4" class="contenedor_simbolo">
+							<div id="simbolo_categoria_4" class="simbolo"></div>
+						</div>
+						<div class="contenedor_texto">
+							<div id="titulo_categoria_4" class="titulo_categoria">HUMOR</div>
+							<div id="pregunta_4" class="pregunta"></div>
+						</div>
+						<div class="separador_gris"></div>
+					</div>
+					<div id="contenedor_pregunta_5" class="contenedor_pregunta">
+						<div id="contenedor_simbolo_5" class="contenedor_simbolo">
+							<div id="simbolo_categoria_5" class="simbolo"></div>
+						</div>
+						<div class="contenedor_texto">
+							<div id="titulo_categoria_5" class="titulo_categoria">REGRESIÓN</div>
+							<div id="pregunta_5" class="pregunta"></div>
+						</div>
+						<div class="separador_gris"></div>
+					</div>
+					<div class="separador"></div>
+				</div>
+			</div>
+			<div class="separador"></div>
+			<div id="boton_nueva_carta">
+			</div>
+			<div class="separador"></div>
+		</div>
+		
+	<style>
+		* {
+			-webkit-tap-highlight-color: transparent;
+		}
+		#contenedor_general {
+			position: absolute;
+			display: block;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 90vw;
+			min-width: 280px;
+			max-width: 350px;
+			height: 660px;
+		}
+		.separador {
+			position: relative;
+			display: block;
+			width: 100%;
+			height: 25px;
+			min-height: 25px;
+			max-height: 25px;
+		}
+		#carta {
+			position: relative;
+			display: block;
+			width: 100%;
+			height: 525px;
+			border-radius: 25px;
+			box-shadow: 0px 0px 10px black;
+			background-color: white;
+		}
+		.contenedor_pregunta {
+			display: flex;
+			flex-direction: row;
+			position: relative;
+			width: 100%;
+			height: 95px;
+		}
+		.contenedor_simbolo {
+			display: block;
+			position: relative;
+			left: 0px;
+			top: 50%;
+			transform: translate(0%, -50%);
+			width: 74px;
+			min-width: 74px;
+			max-width: 74px;
+			height: 66px;
+			background-color: black;
+			border-radius: 0px 35px 35px 0px;
+			
+		}
+		.simbolo {
+			display: block;
+			position: absolute;
+			top: 3px;
+			right: 3px;
+			width: 60px;
+			height: 60px;
+			border-radius: 25px;
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: contain;
+		}
+		.contenedor_texto {
+			margin-top: 10px;
+			margin-bottom: 10px;
+			margin-left: 10px;
+			margin-right: 14px;
+		}
+		.titulo_categoria {
+			font-family: "Saira", sans-serif;
+  		 	font-weight: 500;
+  			font-style: normal;
+			font-size: 15px;
+			line-height: 1.6em;
+		}
+		.pregunta {
+			font-family: "Saira Semi Condensed", sans-serif;
+  		 	font-weight: 300;
+  			font-style: normal;
+			font-size: 14px;
+			line-height: 1.1em;
+			color: black;
+		}
+		.separador_gris {
+			display: block;
+			position: absolute;
+			top: -2px;
+			left: 50%;
+			transform: translate(-50%, 0%);
+			width: 100%;
+			height: 10px;
+			background: -webkit-radial-gradient(top,#666666,white,white);
+			background: radial-gradient(at top,#666666,white,white);
+		}
+		#boton_nueva_carta {
+			position: relative;
+			display: block;
+			left: 50%;
+			width: 60px;
+			height: 60px;
+			border-radius: 30px;
+			transform: translate(-50%, 0%);
+			cursor: pointer;
+			transition: .25s;
+			box-shadow: 0px 0px 10px #666666;
+			background-image: url("./img/icono_nueva_carta.png");
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: contain;
+		}
+		#boton_nueva_carta:hover {
+			box-shadow: 0px 0px 10px black;
+		}
+		#interior_carta_para_hacerlo_desaparecer {transition: .4s;}
+		
+		@media (max-height: 660px) {
+			#contenedor_general {top: 0%; transform: translate(-50%, 0%);}
+			#boton_nueva_carta:hover {box-shadow: 0px 0px 10px #666666;}
+		}
+		
+		#contenedor_simbolo_1 {background-image: linear-gradient(to bottom, #c5c491, #9ebc99);}
+		#contenedor_simbolo_2 {background-image: linear-gradient(to bottom, #76b4a1, #4fadaa);}
+		#contenedor_simbolo_3 {background-image: linear-gradient(to bottom, #27a5b2, #009dba);}
+		#contenedor_simbolo_4 {background-image: linear-gradient(to bottom, #048fa7, #088094);}
+		#contenedor_simbolo_5 {background-image: linear-gradient(to bottom, #0b7281, #0f636e);}
+		#simbolo_categoria_1 {background-image: url("./img/icon_categoria_1.png");}
+		#simbolo_categoria_2 {background-image: url("./img/icon_categoria_2.png");}
+		#simbolo_categoria_3 {background-image: url("./img/icon_categoria_3.png");}
+		#simbolo_categoria_4 {background-image: url("./img/icon_categoria_4.png");}
+		#simbolo_categoria_5 {background-image: url("./img/icon_categoria_5.png");}
+		#titulo_categoria_1 {color: #c5c491;}
+		#titulo_categoria_2 {color: #76b4a1;}
+		#titulo_categoria_3 {color: #27a5b2;}
+		#titulo_categoria_4 {color: #048fa7;}
+		#titulo_categoria_5 {color: #0b7281;}
+	</style>
+	
+	<script>
+		const preguntas_categoria_1 = [
+			"¿Qué sientes, un día de temperatura perfecta, ante un inmenso mar de hierba?",
+			"¿En qué te gusta parecerte a tu padre?",
+			"Si fueras a participar en el Rally París-Dakar, ¿a quién elegirías de copiloto/a? ¿por qué?",
+			"Hay personas que son humo. Otras son espejo. ¿Eres humo o espejo?",
+			"¿Qué te sugiere alguien que parece loco pero es prudente?",
+			"¿Qué sonido te produce más alegría?",
+			"¿Cuál ha sido el abrazo más especial que has recibido en toda tu vida?",
+			"Para ser feliz basta con muy poco. ¿Cuál es tu poco favorito?",
+			"Puedes ser amable y raro. Es bueno para ti y para todos. ¿Cómo eres cuando eres raro/a?",
+			"¿Qué sientes cuando te abraza un niño, y se queda quieto entre tus brazos, con los ojos cerrados?",
+			"En la foto más bonita que te han hecho nunca, ¿qué viste en ti?",
+			"¿Has conectado a fondo alguna vez con alguien con quien te relacionaste solo un instante?, ¿cómo fue?",
+			"¿Qué talento te gustaría que descubriera en ti un cazatalentos?",
+			"¿Hablar de qué, te hace feliz?",
+			"El cerebro, por naturaleza, no está programado para el optimismo, hay que entrenarlo. ¿Cómo lo entrenas tú?",
+			"¿Qué frase te vendría muy bien repetir quinientas veces seguidas, en voz alta, a solas contigo?",
+			"Caminas en silencio dejando tus huellas sobre una nieve que nadie ha pisado, ¿qué sientes?",
+			"¿Qué es aquello que hace que todo lo demás merezca la pena?",
+			"¿Qué ímpetu indomable tratas de mantener domesticado?",
+			"De todos los personajes que eres, ¿cuál enamora?",
+			"¿Qué sientes cuando muchas mariposas se acercan y vuelan  muy cerca, a tu alrededor?",
+			"¿Cómo es ser tú?",
+			"¿Cómo defines exactamente lo que te ha hecho venir y participar en esta reunión?",
+			"¿De qué conjunto te gustaría formar parte?",
+			"En tu interior hay un artista que nunca duerme. Cuando tú duermes, ¿qué hace él?",
+			"¿Qué efecto te produce que alguien se ría a carcajadas de sí mismo/?",
+			"¿Quién te gustaría que te enseñara qué?",
+			"¿Cómo acaricias sin manos?",
+			"¿Qué te gustaría que te sorprendiera de repente al doblar una esquina?",
+			"¿Qué es lo que necesitas que alguien sepa de ti nada más conocerte?",
+		]; //Kii
+		const preguntas_categoria_2 = [
+			"¿Qué es lo que hace que de pronto una casa se transforme en un hogar?",
+			"¿Qué cargo te gustaría ostentar solo por un día?",
+			"Si pudieras crear algo con solo pensar en ello, ¿qué crearías ahora mismo?",
+			"Eres dueña/o de una fábrica de sueños. Fabricas sueños para otros. ¿Cuál es tu preferido?",
+			"¿En qué familia imaginaria o real te integrarías una temporada?",
+			"Si las cualidades se contagiaran por contacto, ¿al lado de quién te colocarías hoy?",
+			"Si tuvieras la facultad de conceder poderes mágicos, ¿cuál concederías? ¿A quién?",
+			"Si fueras un artista al que le pidieran embellecer el mundo, ¿qué harías?",
+			"¿Qué secreto poseen los ojos brillantes y bondadosos de un médico sabio?",
+			"¿Puedes inventarte y describir una fantástica herencia que vas a recibir?",
+			"¿Podrías adjudicarle un superpoder al juego que estás jugando?",
+			"Si pudieras salirte de tu cuerpo y observarte en tu vida diaria, ¿qué te produciría mucha ternura?",
+			"Si nunca se moviera el aire y por lo tanto no existiera el viento, ¿qué echarías de menos?",
+			"¿Qué objeto no conocido en la Tierra te gustaría poseer?",
+			"¿A qué objeto te gustaría concederle poderes extraordinarios?",
+			"Un fantasma se ha enamorado de ti. ¿En qué crees que va a mejorar tu vida?",
+			"La mejor forma de animarte es tratar de animar a otro. ¿Qué secreto esconde este hecho?",
+			"Si el espejo de tu baño hablara, ¿qué te aconsejaría?",
+			"Si fueras un candelabro, ¿qué escena te gustaría iluminar?",
+			"Si tus manos pudieran hablar, ¿qué te pedirían con insistencia?",
+			"¿En qué situación especial sientes que ocupas mucho más espacio?",
+			"Si tu nombre pudiera ser un sonido en lugar de una palabra, ¿qué sonido te gustaría?",
+			"Nuestra presión arterial disminuye cuando estamos en el bosque. ¿Qué hay allí que nos protege?",
+			"Te han dado el premio Nobel de la paz. ¿Por qué gran obra ha sido? (Utiliza la imaginación)",
+			"¿Qué camino recorrerías toda tu vida?",
+			"¿Qué te gustaría descubrir mirándote fijamente a los ojos en un espejo durante varios minutos?",
+			"Si de vez en cuando uno pudiere vivir la vida de otros, ¿a quién le prestarías la tuya?",
+			"¿Qué te aportaría la llegada a tu casa de un ser sobrenatural de aspecto como un relámpago?",
+			"¿Con qué personaje histórico convivirías durante un mes en una cabaña en el bosque?",
+			"¿En qué notarías que había entrado en tu casa un elfo invisible?",
+		]; //FANTASÍA
+		const preguntas_categoria_3 = [
+			"Si fueras director de orquesta, ¿qué te gustaría hacer además de mover una batuta?",
+			"¿Cuál sería el motivo por el que te gustaría que un grupo de gente te recibiera entre vítores y aplausos?",
+			"¿Cómo coloreas tu mundo?",
+			"¿Qué tendría de bueno que todos los seres humanos, un día determinado, nos durmiéramos a la misma hora?",
+			"¿Qué idea, completamente nueva, sientes que expandió tu mente?",
+			"Dicen que solo lo nuevo alimenta el alma. ¿Qué podrías considerar nuevo en este momento?",
+			"¿Qué disfraz de grupo elegirías para las personas aquí presentes en este momento?, ¿por qué ese disfraz?",
+			"¿Puedes hacer una oda corta al silencio? (Oda: composición poética generalmente de alabanza)",
+			"Pasas tres horas encerrado en un ascensor estropeado con un niño de cinco años. ¿Cómo le entretendrías?",
+			"Te invitan a una fiesta. La consigna es ir disfrazado de quien uno es realmente. ¿Cómo sería tu disfraz?",
+			"¿Cómo definirías en una sola frase tu relación con la vida?",
+			"¿Qué es lo mejor?",
+			"¿Cómo serían las dos viñetas que representaran dibujada tu vida?",
+			"¿Qué te gustaría que hubiera detrás del cielo?",
+			"¿Puedes resumir tu vida en tres frases y que resulte interesante?",
+			"¿Puedes describir de manera interesante lo que estás haciendo en este momento?",
+			"¿Qué te aporta la brevedad de la vida?",
+			"Si murieras y te convirtieses en un fantasma. ¿Quién crees que captaría tu presencia? ¿por qué?",
+			"¿Qué otra vida, que no estás viviendo, te reclama de vez en cuando?",
+			"¿Qué crees que siente un surfista en el interior de una ola de casi diez metros de altura?",
+			"¿Qué sería lo mejor de vivir siempre en un hotel?",
+			"¿Cuándo eres primavera?",
+			"¿Qué frase pondrías en una inmensa pancarta en un lado de una carretera con mucho tráfico?",
+			"¿Qué envidias de ti?",
+			"¿Qué viaje crees tú que te transformaría?",
+			"¿Qué características tiene la persona que aún no conoces y estás esperando que aparezca en tu vida?",
+			"Si te pidieran hacer un collage con dibujos, textos y fotos sobre tu vida, ¿qué dos fotos escogerías?",
+			"¿Puedes decir una frase completamente nueva, que no hayas dicho nunca?",
+			"¿Qué grafiti pintarías en la pared exterior de tu casa?",
+			"En un arrebato de locura creativa, ¿qué harías?",
+		]; //INGENIO
+		const preguntas_categoria_4 = [
+			"¿Qué te ocurre a ti cuando una cremallera no funciona? (es humor)",
+			"¿Con qué chiste sonríes cada vez que lo recuerdas?",
+			"¿Qué tendría de bueno creer que hay un Dios en el cielo mirando hacia abajo?",
+			"¿En qué lugar del mundo crees que pasa más tiempo Dios? (es humor)",
+			"¿Si tuvieras un billón de dólares, en qué lo notaríamos ahora mismo?",
+			"Cuando mientes: ¿tartamudeas, carraspeas o te sale un hilo de voz?",
+			"¿La más cómica de tus manías?",
+			"¿Qué personaje, de todos los que representas en tu vida, es el más idiota?",
+			"¿De qué te quieres desprender y no hay manera porque lo llevas adherido como chicle al pelo?",
+			"¿Puedes mostrarnos por gestos, sin hablar, cómo es tu actual situación económica?",
+			"Hablando con sinceridad, ¿cuántas personas te gustaría que hubiera en el mundo?",
+			"¿Cuál ha sido el golpe más cómico que te has dado en la cabeza?",
+			"¿Qué parte de tu carácter te impediría vivir en un iglú?",
+			"¿En qué lugar del mundo crees tú que pasa más tiempo Dios? (es humor)",
+			"¿A qué parte de ti intentas dar esquinazo? (es humor)",
+			"Sinceramente, ¿crees que se te daría bien ser millonario/a?",
+			"¿Cómo resumirías en pocas palabras algo que no has contado nunca a nadie y tampoco vas a contarlo ahora?",
+			"¿Qué cansino papel crees que bordas en tu vida: intransigente, quejica, hipocondriaco/a, consejero/a… etc?",
+			"Si alguien te pidiera que impartieras una sesión de risoterapia, ¿qué ejercicio te gustaría proponer?",
+			"¿Qué anécdota de tu vida relatas siempre riéndote?",
+			"¿A qué escena de tu vida te gustaría ponerle siempre una música de violín?",
+			"¿Qué sientes por el solitario medio limón que siempre se encuentra en un frigorífico?",
+			"¿Qué crees tú que te falta para ser perfecto/a? (es humor)",
+			"A los pensamientos negativos nunca hay que invitarlos a tomar té. ¿A cuál sueles tú invitar a ese dichoso té?",
+			"De todas las anécdotas familiares que te han contado, ¿cuál es la más cómica?",
+			"¿Cuál es la verdadera causa por la que no eres rico/a? (recuerda, es humor)",
+			"Si los seres humanos tuvieran un rostro que cambiara de aspecto cada día, ¿te casarías?",
+			"¿A qué desastre natural te gustaría sobrevivir para poder contarlo el resto de tu vida?",
+			"¿Por qué, según tú, deberías caerle bien a todo el mundo? (es humor)",
+			"¿Cuál es la anécdota personal más cómica que te ha contado alguien?",
+		]; //HUMOR
+		const preguntas_categoria_5 = [
+			"¿Qué caricia verbal que recibiste en tu niñez no has olvidado nunca?",
+			"¿En qué momento de la niñez recuerdas verte haciendo algo enloquecidamente?",
+			"¿De qué has tenido siempre suficiente?",
+			"De niño, el inventor del teléfono trataba de oír el sonido del trigo creciendo. ¿Qué intentabas tú, de pequeño/a?",
+			"¿Una escena de tu vida en la que te sentiste feliz rodeado/a de mucha gente?",
+			"Si proyectaran tu vida en una pantalla, ¿qué escena le pedirías al director que alargase todo lo que pudiera?",
+			"¿Cuál de tus juguetes tenía alma?",
+			"¿En qué vehículo irías a buscar a la niña o al niño que fuiste? ¿A qué lugar lo llevarías unas horas?",
+			"Si el niño o la niña que fuiste estuviera ahora sentado/a a tu lado, ¿qué crees que te diría espontáneamente?",
+			"¿Qué historia, que te contó alguien, pasó de largo por tu cabeza y llegó directa al corazón?",
+			"¿Cuál era el mejor momento del día para ser niño?",
+			"Siendo quien eres ahora, ¿a quién le darías un largo abrazo en tu infancia?",
+			"¿Recuerdas el día que te viste más atractivo/a en toda tu vida?",
+			"¿Uno de los días más interesantes de tu vida hasta ahora?",
+			"Cada verano, la infancia regresa. ¿En qué lo notas tú?",
+			"¿En qué momento te reinventaste?",
+			"¿Puedes inventarte una experiencia fantástica de tu infancia que en realidad nunca ocurrió?",
+			"¿Qué foto, que no te hicieron nunca, te gustaría tener?",
+			"¿Puedes contar una anécdota de tu infancia poniendo la voz de entonces?",
+			"¿Quién te regaló grandes cantidades de tiempo?",
+			"Escoge una persona importante de tu pasado. ¿qué le agradecerías, en este momento, mirándole a los ojos?",
+			"¿Puedes inventarte un familiar que nunca existió y le hubiera aportado magia a tu vida?",
+			"¿A qué lugar regresas más a menudo con la imaginación?",
+			"¿Cuál de tus juguetes tenía alma?",
+			"¿Cómo era aquella escena que te fascinó siendo niño/a?",
+			"¿En qué disciplina te hubiera gustado ser un niño o una niña prodigio?",
+			"¿Qué detalle de esta reunión se convertirá en recuerdo y crees que perdurará en tu mente?",
+			"¿Con qué fragmento de tu vida harías una representación teatral?",
+			"¿Cuál es tu recuerdo preferido, con imagen, olor y sabor?",
+			"¿Quién te regaló una frase realmente motivadora?",
+		]; //REGRESIÓN
+		function nueva_pregunta_en_categoria_1() {
+		  	const indice_1 = Math.floor(Math.random() * preguntas_categoria_1.length);
+		  	const pregunta_elegida_1 = preguntas_categoria_1[indice_1];
+		  	document.getElementById("pregunta_1").textContent = pregunta_elegida_1;
+		}
+		function nueva_pregunta_en_categoria_2() {
+		  	const indice_2 = Math.floor(Math.random() * preguntas_categoria_2.length);
+		  	const pregunta_elegida_2 = preguntas_categoria_2[indice_2];
+		  	document.getElementById("pregunta_2").textContent = pregunta_elegida_2;
+		}
+		function nueva_pregunta_en_categoria_3() {
+		  	const indice_3 = Math.floor(Math.random() * preguntas_categoria_3.length);
+		  	const pregunta_elegida_3 = preguntas_categoria_3[indice_3];
+		  	document.getElementById("pregunta_3").textContent = pregunta_elegida_3;
+		}
+		function nueva_pregunta_en_categoria_4() {
+		  	const indice_4 = Math.floor(Math.random() * preguntas_categoria_4.length);
+		  	const pregunta_elegida_4 = preguntas_categoria_4[indice_4];
+		  	document.getElementById("pregunta_4").textContent = pregunta_elegida_4;
+		}
+		function nueva_pregunta_en_categoria_5() {
+		  	const indice_5 = Math.floor(Math.random() * preguntas_categoria_5.length);
+		  	const pregunta_elegida_5 = preguntas_categoria_5[indice_5];
+		  	document.getElementById("pregunta_5").textContent = pregunta_elegida_5;
+		}	
+		function cargar_primera_carta() {
+			nueva_pregunta_en_categoria_1();
+			nueva_pregunta_en_categoria_2();
+			nueva_pregunta_en_categoria_3();
+			nueva_pregunta_en_categoria_4();
+			nueva_pregunta_en_categoria_5();
+		}
+		function nueva_carta() {
+			document.getElementById("interior_carta_para_hacerlo_desaparecer").style.opacity = "0";
+			setTimeout(function(){
+				nueva_pregunta_en_categoria_1();
+				nueva_pregunta_en_categoria_2();
+				nueva_pregunta_en_categoria_3();
+				nueva_pregunta_en_categoria_4();
+				nueva_pregunta_en_categoria_5();
+				document.getElementById("interior_carta_para_hacerlo_desaparecer").style.opacity = "1";
+			}, 400);
+		}
+		document.getElementById("boton_nueva_carta").addEventListener("click", function() {nueva_carta();});
+	</script>
