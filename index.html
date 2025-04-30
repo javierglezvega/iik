@@ -6,7 +6,7 @@
 		<title>Kii</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Saira+Semi+Condensed:wght@300;400&family=Saira:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Saira+Semi+Condensed:wght@300;400;500&family=Saira:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
 	</head>
 	<body onload="cargar_primera_carta()">
 		<div id="contenedor_general">
@@ -71,6 +71,11 @@
 			</div>
 			<div class="separador"></div>
 		</div>
+		<div id="contenedor_introducir_codigo">
+			<div>Este es un sitio web privado y de uso personal.<br>Por favor, introduce el código.</div>
+		    <input id="codigo" type="text" maxlength="4" />
+		    <button id="acceder" onclick="verificarCodigo()">ENTRAR</button>
+		</div>
 		
 	<style>
 		* {
@@ -78,7 +83,7 @@
 		}
 		#contenedor_general {
 			position: absolute;
-			display: block;
+			display: none;
 			top: 50%;
 			left: 50%;
 			transform: translate(-50%, -50%);
@@ -86,7 +91,68 @@
 			min-width: 280px;
 			max-width: 350px;
 			height: 660px;
+			animation: aparece_contenedor_general;
+			animation-duration: 1s;
 		}
+		@keyframes aparece_contenedor_general {
+			0% { opacity: 0; }
+			100% { opacity: 1; }
+		}
+		#contenedor_introducir_codigo {
+			position: absolute;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 90vw;
+			min-width: 280px;
+			max-width: 350px;
+			gap: 15px;
+			font-family: "Saira Semi Condensed", sans-serif;
+  		 	font-weight: 500;
+  			font-style: normal;
+			font-size: 14px;
+			line-height: 1.4em;
+			text-align: center;
+			color: #4fadaa;
+		}
+		#codigo {
+			font-family: "Saira", sans-serif;
+  		 	font-weight: 500;
+  			font-style: normal;
+			font-size: 16px;
+			line-height: 1.1em;
+			color: #4fadaa;
+			border-radius: 0px;
+			border: 1px solid #4fadaa;
+			outline: none;
+		}
+		#acceder {
+			display: block;
+			position: relative;
+			width: 90px;
+			height: 30px;
+			border-radius: 15px;
+			margin-top: 5px;
+			border: none;
+			outline: none;
+			font-family: "Saira Semi Condensed", sans-serif;
+  		 	font-weight: 400;
+  			font-style: normal;
+			font-size: 14px;
+			line-height: 1.1em;
+			text-align: center;
+			color: white;
+			cursor: pointer;
+			transition: .3s ease;
+			background-image: linear-gradient(to bottom, #76b4a1, #4fadaa);
+			box-shadow: 0px 0px 0px #999999;
+		}
+		#acceder:hover {
+			box-shadow: 0px 0px 5px #999999;
+		}		
 		.separador {
 			position: relative;
 			display: block;
@@ -189,10 +255,27 @@
 			box-shadow: 0px 0px 10px black;
 		}
 		#interior_carta_para_hacerlo_desaparecer {transition: .4s;}
+		#codigo {
+			padding: 8px;
+			font-size: 16px;
+			width: 100px;
+			text-align: center;
+		}
+		.shake {
+			animation: shake 0.3s;
+		}
+		@keyframes shake {
+			0% { transform: translateX(0); }
+			25% { transform: translateX(-5px); }
+			50% { transform: translateX(5px); }
+			75% { transform: translateX(-5px); }
+			100% { transform: translateX(0); }
+		}
 		
 		@media (max-height: 660px) {
 			#contenedor_general {top: 0%; transform: translate(-50%, 0%);}
 			#boton_nueva_carta:hover {box-shadow: 0px 0px 10px #666666;}
+			#acceder:hover {box-shadow: 0px 0px 0px #999999;}	
 		}
 		
 		#contenedor_simbolo_1 {background-image: linear-gradient(to bottom, #c5c491, #9ebc99);}
@@ -244,6 +327,26 @@
 			"¿Cómo acaricias sin manos?",
 			"¿Qué te gustaría que te sorprendiera de repente al doblar una esquina?",
 			"¿Qué es lo que necesitas que alguien sepa de ti nada más conocerte?",
+			"¿Qué logro pequeño y solitario te hizo muy feliz?",
+			"¿Cuál sería un estupendo motivo para llorar de alegría?",
+			"¿Qué te gustaría que supieran de ti, en este momento, todos los presentes?",
+			"De todos los personajes que eres, ¿cuál te cuida?",
+			"¿Qué te gusta de ti en este momento?",
+			"¿En qué eres rico/a?",
+			"¿Qué cosa sencilla es para ti verdaderamente grande?",
+			"Si decidieras reiniciar tu vida y volver a empezar una totalmente distinta, ¿qué es lo primero que harías?",
+			"De todo lo que no haces, ¿qué es lo que más te gusta?",
+			"¿Cuál es la situación en la que te resulta más interesante tu compañía?",
+			"¿Qué sientes al conocer a un anciano muy optimista?",
+			"¿Sabes amar?",
+			"¿Qué sencillo elemento de la naturaleza puede representar para ti la esencia de la vida?",
+			"¿Qué es lo que un día, inesperada y gratamente, te asombró de ti mismo/a?",
+			"Del uno al diez, ¿cuánta alegría te debes?",
+			"¿Qué le agradeces, en concreto, a tu cerebro?",
+			"¿De qué eres consciente, por encima de todo lo demás?",
+			"Los grandes momentos en la vida son pocos y muy separados. ¿Cuál ha sido tu último gran momento?",
+			"¿El día más rentable de tu vida hasta ahora?",
+			"¿Qué sientes cuando una persona que aprecias te abraza durante más tiempo del que esperabas?",
 		]; //Kii
 		const preguntas_categoria_2 = [
 			"¿Qué es lo que hace que de pronto una casa se transforme en un hogar?",
@@ -276,6 +379,26 @@
 			"¿Qué te aportaría la llegada a tu casa de un ser sobrenatural de aspecto como un relámpago?",
 			"¿Con qué personaje histórico convivirías durante un mes en una cabaña en el bosque?",
 			"¿En qué notarías que había entrado en tu casa un elfo invisible?",
+			"¿En qué escena de tu vida pasada introducirías un mago para iluminarla?",
+			"Si el mundo fuera en blanco y negro, ¿a qué único momento le pondrías un toque de color?",
+			"¿Qué dimensión mágica tiene este momento?",
+			"Te rodea, de repente, una niebla muy densa. ¿Qué hecho extraordinario te gustaría que ocurriera en su interior?",
+			"Si la ropa pudiera comunicarse contigo, ¿qué te diría la que llevas puesta en este momento?",
+			"¿Qué experiencia te hace desaparecer y te convierte en nube?",
+			"La magia no existe sin un mago. ¿En qué ocasión lo fuiste?",
+			"¿Qué te gustaría que apareciera ahora mismo ante ti y te dejara perplejo?",
+			"¿Cuándo eres medicina?",
+			"Si creyeras en la reencarnación, ¿qué asegurarías que fuiste en tu anterior vida?",
+			"Visualiza durante unos segundos a la hija que no has tenido, ¿qué te gusta de ella?",
+			"¿El espíritu de quién crees que sería muy buena compañía en un momento de tristeza?",
+			"¿Qué cargo te gustaría ostentar solo por un día?",
+			"Si la alegría de vivir se instalara en tu casa, ¿cómo crees que sería vuestra convivencia?",
+			"¿Qué aspecto de la realidad te parece irreal?",
+			"Si nacieras otra vez y solo pudieras recordar un aspecto de tu vida actual, ¿cuál te gustaría que fuera?",
+			"El oro no se mueve. ¿Qué poder tiene que aunque duerme ilumina?",
+			"Si el diablo te invitara a una cena de gala y no tuvieras más remedio que ir, ¿a quién le pedirías que te acompañara?",
+			"¿Qué corto fragmento de tu historia quedaría bonito convertido en comedia musical?",
+			"Si mediante un dispositivo especial pudieras implantar en tu cuerpo un nuevo sentimiento, ¿cuál elegirías?",
 		]; //FANTASÍA
 		const preguntas_categoria_3 = [
 			"Si fueras director de orquesta, ¿qué te gustaría hacer además de mover una batuta?",
@@ -295,7 +418,7 @@
 			"¿Puedes resumir tu vida en tres frases y que resulte interesante?",
 			"¿Puedes describir de manera interesante lo que estás haciendo en este momento?",
 			"¿Qué te aporta la brevedad de la vida?",
-			"Si murieras y te convirtieses en un fantasma. ¿Quién crees que captaría tu presencia? ¿por qué?",
+			"Si murieras y te convirtieses en un fantasma, ¿quién crees que captaría tu presencia? ¿por qué?",
 			"¿Qué otra vida, que no estás viviendo, te reclama de vez en cuando?",
 			"¿Qué crees que siente un surfista en el interior de una ola de casi diez metros de altura?",
 			"¿Qué sería lo mejor de vivir siempre en un hotel?",
@@ -308,6 +431,26 @@
 			"¿Puedes decir una frase completamente nueva, que no hayas dicho nunca?",
 			"¿Qué grafiti pintarías en la pared exterior de tu casa?",
 			"En un arrebato de locura creativa, ¿qué harías?",
+			"Contar historias es una habilidad muy antigua. ¿Nos cuentas una historia inolvidable en tres frases?",
+			"¿Con qué mensaje, escrito en tu frente, te presentarías en una fiesta?",
+			"Si te hipnotizaran, ¿qué te gustaría haber descubierto, al salir del estado hipnótico?",
+			"Pintas una cara muy agradable en un huevo y le cuentas como te sientes. ¿Qué te aporta su presencia?",
+			"Si te sentaras en la calle a pedir limosna para probar la experiencia, ¿qué escribirías en tu ingenioso cartel?",
+			"¿Cómo describirías ese algo que en ocasiones te hace brillar?",
+			"Si heredaras una isla en el Pacífico, ¿qué negocio pondrías allí, absolutamente original?",
+			"Si te vieras entre gente que decidiera repoblar un pueblo abandonado, ¿qué profesión elegirías allí?",
+			"¿Puedes decir la frase &quot;soy una persona muy especial&quot; en un idioma inventado?",
+			"En tu mente se crean cosas grandiosas que nunca ocurrirán. ¿Puedes escoger una que sí?",
+			"¿Qué le añadirías a la sala de consulta de un médico?",
+			"¿Qué le añadirías a tus abrazos?",
+			"¿Puedes escenificar un fragmento de una conversación entre tu censor interno (tu crítico) y tu libertad?",
+			"¿Qué frase, referida a ti, utilizarías para captar la atención de todos los presentes en una reunión?",
+			"Si organizaras una gran fiesta y no asistiera ni un solo invitado, ¿qué te contarías a ti mismo/a para animarte?",
+			"¿Cómo ensancharías el mundo de un niño?",
+			"¿Puedes inventar un refrán?",
+			"¿De qué ingeniosa manera te gustaría ganar dinero?",
+			"¿Qué palabras te gustaría pronunciar al fin con mucha vehemencia ante cualquiera?",
+			"En una cita a ciegas, ¿qué cualidad utilizarías para triunfar?",
 		]; //INGENIO
 		const preguntas_categoria_4 = [
 			"¿Qué te ocurre a ti cuando una cremallera no funciona? (es humor)",
@@ -340,6 +483,26 @@
 			"¿A qué desastre natural te gustaría sobrevivir para poder contarlo el resto de tu vida?",
 			"¿Por qué, según tú, deberías caerle bien a todo el mundo? (es humor)",
 			"¿Cuál es la anécdota personal más cómica que te ha contado alguien?",
+			"Si tuvieras que hacer un divertido monólogo, ¿qué tema elegirías?",
+			"Si te contrataran para actuar en una comedia, ¿qué papel crees que te ofrecerían?",
+			"Se produce un asesinato en un tren en el que viajas. ¿Te gusta que haya ocurrido, para poder contarlo?",
+			"Empleando el sentido del humor, ¿qué título le pondrías a tu biografía?",
+			"¿Qué es lo más cómico de tu vida actual?",
+			"¿Con quién te ríes más a menudo y más a gusto? ¿Por qué?",
+			"¿Con qué vocal te ríes? ¿Qué sientes si la cambias por otra?",
+			"¿Recuerdas alguna escena dramática realmente cómica?",
+			"¿Te gustas por detrás?",
+			"Si existiera un lugar donde no tuviera cabida la queja, ¿te dejarían entrar?",
+			"¿Qué frase le dirías a una persona que acabas de conocer para parecerle alguien muy interesante?",
+			"¿Qué fue lo más cómico que soñaste una noche?",
+			"¿Qué habitual escena de tu vida en compañía de alguien ganaría mucho con sonido de risas de fondo?",
+			"¿Te da de vez en cuando por hacer de terapeuta?",
+			"¿Qué única pregunta le harías a una croqueta de un bar?",
+			"Estás sentado bajo un cocotero. Un coco cae y te golpea en la cabeza. ¿Qué brillante idea surge en tu mente?",
+			"¿Qué relación tienes con el polvo de tu casa?",
+			"¿Te hubiera gustado, en tu infancia o adolescencia, cambiar a tus padres por otros que conocías? (es humor)",
+			"Recibes una herencia. Eres rico. Solo lo sabe el notario, el banco y hacienda. No vas a contarlo. ¿Cómo lo disimulas?",
+			"¿Puedes hablar con cierta vanidad de tus talentos, durante medio minuto? (es humor, date permiso)",
 		]; //HUMOR
 		const preguntas_categoria_5 = [
 			"¿Qué caricia verbal que recibiste en tu niñez no has olvidado nunca?",
@@ -372,6 +535,26 @@
 			"¿Con qué fragmento de tu vida harías una representación teatral?",
 			"¿Cuál es tu recuerdo preferido, con imagen, olor y sabor?",
 			"¿Quién te regaló una frase realmente motivadora?",
+			"¿Qué cosa en concreto te gustaría recordar, que no recuerdas en absoluto?",
+			"Imagínate de niño/a, viviendo viviendo con tu familia en una fabulosa mansión. ¿Qué sería lo mejor?",
+			"¿Qué has mirado siempre, desde niño/a, con mucha atención?",
+			"¿En qué escena de tu vida bailarías en este momento, divertido/a, con tu madre?",
+			"¿Tenías una relación especial con algún mueble en concreto en la casa de tu infancia?",
+			"¿A recuperar qué, volverías un instante a tu adolescencia?",
+			"¿En qué fue abundante tu infancia?",
+			"¿Qué te regaló aquel cuento que te ha acompañado desde siempre?",
+			"¿Con qué objeto, que no era un juguete, jugabas de niño/a?",
+			"¿Cuál es el recuerdo más amable que llega a tu mente en este momento?",
+			"¿La experiencia más insólita de tu vida?",
+			"¿Por qué recuerdas con tanto cariño aquel día?",
+			"¿Vives enamorado de algo en la actualidad?",
+			"¿Recuerdas algún momento inolvidable de intensa risa compartida?",
+			"Siendo quien eres ahora, ¿con qué persona que formó parte de tu infancia harías un viaje?",
+			"¿Qué juguete te hizo más compañía que una persona?",
+			"De niño/a, aparte de tus padres, ¿con quién habrías ido de la mano hasta el final del mundo?",
+			"¿En qué ocasión te pareció ser ayudado/a por algún tipo de incorpóreo ángel benefactor?",
+			"¿Una escena de tu vida en la que hubo más gente contenta al mismo tiempo?",
+			"Si pudieras acceder a una escena de tu infancia y permanecer en ella unas horas, ¿cuál elegirías?",
 		]; //REGRESIÓN
 		function nueva_pregunta_en_categoria_1() {
 		  	const indice_1 = Math.floor(Math.random() * preguntas_categoria_1.length);
@@ -417,4 +600,26 @@
 			}, 400);
 		}
 		document.getElementById("boton_nueva_carta").addEventListener("click", function() {nueva_carta();});
+	    function obtenerCodigoDelDia() {
+			const hoy = new Date();
+			const dia = String(hoy.getDate()).padStart(2, '0');
+			const mes = String(hoy.getMonth() + 1).padStart(2, '0');
+			return dia + mes;
+	    }
+	    function verificarCodigo() {
+			const input = document.getElementById("codigo");
+			const codigoIngresado = input.value.trim();
+			const codigoCorrecto = obtenerCodigoDelDia();
+			if (codigoIngresado === codigoCorrecto) {
+				document.getElementById("contenedor_introducir_codigo").style.display = "none";
+				document.getElementById("contenedor_general").style.display = "block";
+			} else {
+				// Activar animación shake
+				input.classList.add("shake");
+				// Quitar la clase después de la animación para permitir reutilizarla
+				setTimeout(() => {
+					input.classList.remove("shake");
+				}, 300);
+			}
+		}
 	</script>
